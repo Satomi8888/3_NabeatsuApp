@@ -10,17 +10,50 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    var countnumber = 0
+
     @IBOutlet weak var tapCountLabel: UILabel!
-    
-    @IBAction func tapCountButton(_ sender: Any) {
-    }
-    
-    
+    @IBOutlet weak var nabeatsuImage: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        nabeatsuImage.image = #imageLiteral(resourceName: "nomal")
     }
+    
+    @IBAction func tapResetButton(_ sender: Any) {
+        countnumber = 0
+        tapCountLabel.text = "count　\(countnumber)"
+        nabeatsuImage.image = #imageLiteral(resourceName: "nomal")
+    }
+    
+    @IBAction func tapCountButton(_ sender: Any) {
+        var judge3:Bool = false
+        var judge5:Bool = false
+        countnumber += 1
+        tapCountLabel.text = "count　\(countnumber)"
+        
+        
 
+        if countnumber % 3 == 0 || String(countnumber).contains("3") {
+            judge3 = true
+        }
+        if countnumber % 5 == 0 || String(countnumber).contains("5") {
+            judge5 = true
+        }
+        
+        if judge3 && judge5 {
+            nabeatsuImage.image = #imageLiteral(resourceName: "wallaby")
+        } else if judge5 {
+            nabeatsuImage.image = #imageLiteral(resourceName: "image5")
+        } else if judge3 {
+            nabeatsuImage.image = #imageLiteral(resourceName: "image3")
+        } else {
+            nabeatsuImage.image = #imageLiteral(resourceName: "nomal")
+        }
+    }
+    
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
