@@ -9,23 +9,25 @@
 import UIKit
 
 class ViewController: UIViewController {
-
-    var countnumber = 0
-
-    @IBOutlet weak var tapCountLabel: UILabel!
-    @IBOutlet weak var nabeatsuImage: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         nabeatsuImage.image = #imageLiteral(resourceName: "nomal")
     }
     
+    var countnumber = 0
+
+    @IBOutlet weak var tapCountLabel: UILabel!
+    @IBOutlet weak var nabeatsuImage: UIImageView!
+    
+    //リセットボタンのアクション
     @IBAction func tapResetButton(_ sender: Any) {
         countnumber = 0
         tapCountLabel.text = "count　\(countnumber)"
         nabeatsuImage.image = #imageLiteral(resourceName: "nomal")
     }
     
+    //カウントアップボタンのアクション
     @IBAction func tapCountButton(_ sender: Any) {
         var judge3:Bool = false
         var judge5:Bool = false
@@ -33,7 +35,7 @@ class ViewController: UIViewController {
         tapCountLabel.text = "count　\(countnumber)"
         
         
-
+        //数字を判定
         if countnumber % 3 == 0 || String(countnumber).contains("3") {
             judge3 = true
         }
@@ -41,6 +43,7 @@ class ViewController: UIViewController {
             judge5 = true
         }
         
+        //数字の判定を元に画像を表示
         if judge3 && judge5 {
             nabeatsuImage.image = #imageLiteral(resourceName: "wallaby")
         } else if judge5 {
@@ -51,8 +54,6 @@ class ViewController: UIViewController {
             nabeatsuImage.image = #imageLiteral(resourceName: "nomal")
         }
     }
-    
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
