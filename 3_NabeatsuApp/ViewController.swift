@@ -34,7 +34,6 @@ class ViewController: UIViewController {
         countnumber += 1
         tapCountLabel.text = "count　\(countnumber)"
         
-        
         //数字を判定
         if countnumber % 3 == 0 || String(countnumber).contains("3") {
             judge3 = true
